@@ -147,6 +147,7 @@ public:
 
 private:
     void RequestToGetForeground(Kernel::HLERequestContext& ctx);
+    void GetPopFromGeneralChannelEvent(Kernel::HLERequestContext& ctx);
 };
 
 class IGlobalStateController final : public ServiceFramework<IGlobalStateController> {

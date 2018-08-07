@@ -717,6 +717,12 @@ void IHomeMenuFunctions::RequestToGetForeground(Kernel::HLERequestContext& ctx) 
     LOG_WARNING(Service_AM, "(STUBBED) called");
 }
 
+void IHomeMenuFunctions::GetPopFromGeneralChannelEvent(Kernel::HLERequestContext& ctx) {
+    IPC::ResponseBuilder rb{ctx, 2};
+    rb.Push(RESULT_SUCCESS);
+    LOG_WARNING(Service_AM, "(STUBBED) called");
+}
+
 IGlobalStateController::IGlobalStateController() : ServiceFramework("IGlobalStateController") {
     static const FunctionInfo functions[] = {
         {0, nullptr, "RequestToEnterSleep"},
