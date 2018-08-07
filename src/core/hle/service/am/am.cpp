@@ -139,7 +139,7 @@ ISelfController::ISelfController(std::shared_ptr<NVFlinger::NVFlinger> nvflinger
         {19, nullptr, "SetScreenShotImageOrientation"},
         {20, nullptr, "SetDesirableKeyboardLayout"},
         {40, &ISelfController::CreateManagedDisplayLayer, "CreateManagedDisplayLayer"},
-        {41, nullptr, "IsSystemBufferSharingEnabled"},
+        {41, &ISelfController::IsSystemBufferSharingEnabled, "IsSystemBufferSharingEnabled"},
         {42, nullptr, "GetSystemSharedLayerHandle"},
         {50, &ISelfController::SetHandlesRequestToDisplay, "SetHandlesRequestToDisplay"},
         {51, nullptr, "ApproveToDisplay"},
@@ -253,6 +253,13 @@ void ISelfController::GetLibraryAppletLaunchableEvent(Kernel::HLERequestContext&
 
     LOG_WARNING(Service_AM, "(STUBBED) called");
 }
+
+void ISelfController::IsSystemBufferSharingEnabled(Kernel::HLERequestContext& ctx) {
+    IPC::ResponseBuilder rb{ctx, 2};
+    rb.Push(RESULT_SUCCESS);
+    LOG_WARNING(Service_AM, "(STUBBED) called");
+}
+
 
 void ISelfController::CreateManagedDisplayLayer(Kernel::HLERequestContext& ctx) {
     // TODO(Subv): Find out how AM determines the display to use, for now just create the layer
@@ -704,7 +711,7 @@ IHomeMenuFunctions::IHomeMenuFunctions() : ServiceFramework("IHomeMenuFunctions"
         {11, nullptr, "LockForeground"},
         {12, nullptr, "UnlockForeground"},
         {20, nullptr, "PopFromGeneralChannel"},
-        {21, nullptr, "GetPopFromGeneralChannelEvent"},
+        {21, &IHomeMenuFunctions::GetPopFromGeneralChannelEvent, "GetPopFromGeneralChannelEvent"},
         {30, nullptr, "GetHomeButtonWriterLockAccessor"},
         {31, nullptr, "GetWriterLockAccessorEx"},
     };
